@@ -19,6 +19,9 @@ from . import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("<int:event_id>/", views.detail, name="detail"),
+    path("locations/", views.locations, name="locations"),
+    path("locations/<int:location_id>/", views.location_details, name="location_details"),
+    path("date/<int:event_id>/", views.date_details, name="date_details"),
 ]
 
 

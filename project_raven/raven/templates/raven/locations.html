@@ -5,14 +5,11 @@
 
 <img src="{% static 'polls/avatar.png' %}">
 <ul>
-    {% for event in events %}
+    {% for location in locations %}
         <li>
-            <a href="{% url 'detail' event.id %}">
-            {{ event.desc | upper }}
+            <a href="{% url 'location_details' location.id %}">
+            {{ location.name | upper }}
             </a> 
-            <p>
-                <a href="{% url 'date_details' event.id %}">{{ event.date.date }}</a> @ {{ event.date.time }}
-            </p>
         </li>
     {% empty %}
         <li>No events</li>
