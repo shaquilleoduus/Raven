@@ -11,7 +11,7 @@
             {{ event.desc | upper }}
             </a> 
             <p>
-                <a href="{% url 'date_details' event.id %}">{{ event.date.date }}</a> @ {{ event.date.time }}
+                <a href="{% url 'events_by_year_month_day' event.date.year event.date.month event.date.day %}">{{ event.date.date }}</a> @ {{ event.date.time }}
             </p>
         </li>
     {% empty %}
