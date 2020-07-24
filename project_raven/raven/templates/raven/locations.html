@@ -3,16 +3,24 @@
 {% block title %}UFO Events{% endblock %} 
 {% block content %}
 
-<img src="{% static 'polls/avatar.png' %}">
-<ul>
+<div class="top-div">
+    <img src="{% static 'raven/spaceship.png' %}">
+    <h1> UFO Sighting Locations</h1>
+</div>
+
+<div class="locations-container">
+
+    <div class="header">
+        <p>Location</p>
+    </div>
     {% for location in locations %}
-        <li>
-            <a href="{% url 'location_details' location.id %}">
+    <div class="row">
+        <a href="{% url 'location_details' location.id %}">
             {{ location.name | upper }}
-            </a> 
-        </li>
+        </a> 
+    </div>
     {% empty %}
-        <li>No events</li>
+        <p>No locations</p>
     {% endfor %}
-</ul>
-{% endblock %}
+    {% endblock %}
+</div>

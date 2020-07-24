@@ -3,19 +3,40 @@
 {% block title %}UFO Events{% endblock %} 
 {% block content %}
 
-<img src="{% static 'polls/avatar.png' %}">
-<ul>
+<div class="top-div">
+    <img src="{% static 'raven/spaceship.png' %}">
+    <h1>UFO Sightings Database</h1>
+</div>
+
+<div class="events-container">
+
+    <div class="header">
+        <div class="column _7">
+            <p>Event Description</p>
+        </div>
+        <div class="column _15">
+            <p>Date</p>
+        </div>
+        <div class="column _15">
+            <p>Location</p>
+        </div>
+    </div>
     {% for event in events %}
-        <li>
+    <div class="row">
+        <div class="column _7">
             <a href="{% url 'detail' event.id %}">
-            {{ event.desc | upper }}
+                {{ event.desc | upper }}
             </a> 
-            <p>
-                <a href="{% url 'events_by_year_month_day' event.date.year event.date.month event.date.day %}">{{ event.date.date }}</a> @ {{ event.date.time }}
-            </p>
-        </li>
+        </div>
+        <div class="column _15">
+            <a href="{% url 'events_by_year_month_day' event.date.year event.date.month event.date.day %}">{{ event.date.date }}</a> @ {{ event.date.time }}
+        </div>
+        <div class="column _15">
+            <p>{{ event.location }}</p>
+        </div>
+    </div>
     {% empty %}
-        <li>No events</li>
+        <p>No events</p>
     {% endfor %}
-</ul>
-{% endblock %}
+    {% endblock %}
+</div>

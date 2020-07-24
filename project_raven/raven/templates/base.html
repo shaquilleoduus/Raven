@@ -1,14 +1,18 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'raven/basestyle.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
     <nav>
-        <a href="/raven">All Events</a>
-        <a href="/raven/locations/">Locations</a>
+        <a class="nav-link" href="/raven">All Events</a>
+        <a class="nav-link" href="/raven/locations/">Locations</a>
     </nav>
     {% block content %}{% endblock %}
 </body>

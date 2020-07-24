@@ -15,6 +15,6 @@ class Event(models.Model):
     # add date here?
 
     def __str__(self):
-        return f"{self.desc[:20]}..."
-
+        # return f"{self.desc[:20]}..."
+        return self.desc
 # class Date ??

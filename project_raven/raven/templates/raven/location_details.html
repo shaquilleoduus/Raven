@@ -3,17 +3,35 @@
 {% block title %}UFO Events{% endblock %} 
 {% block content %}
 
-<img src="{% static 'polls/avatar.png' %}">
-<ul>
-    {{location}}
+<div class="top-div">
+    <img src="{% static 'raven/spaceship.png' %}">
+    <h1> UFO Sightings in {{location}}</h1>
+</div>
 
+<div class="locations-container">
+
+    <div class="header">
+        <div class="column _7">
+            <p>EVENT DESCRIPTION</p>
+        </div>
+        <div class="column _3">
+            <p>DATE</p>
+        </div>
+    </div>
+    
     {% for event in events %}
-        <li>
-            {{event}}
-        </li>
+    <div class="row">
+        <div class="column _7">
+            <p>{{event}}</p> 
+        </div>
+        <div class="column _3">
+            <p>{{event.date}}</p> 
+        </div>
+    </div>
     {% empty %}
-        <li>No events</li>
+    <div class="row">
+        <p>No locations</p>
+    </div>
     {% endfor %}
-
-</ul>
-{% endblock %}
+    {% endblock %}
+</div>
