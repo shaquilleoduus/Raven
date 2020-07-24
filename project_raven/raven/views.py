@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from .models import Location, Event
 from django.shortcuts import render
+import datetime
 
 def index(request):
     context = {"events": Event.objects.all()}
@@ -37,6 +38,37 @@ def date_details(request, event_id):
         "raven/index.html", 
         {
             "date": d,
-            "events": Event.objects.all().filter(date=d),
+            "events": Event.objects.all().filter(date__year=d.year).filter(date__month=d.month).filter(date__day=d.day)
+            # "events": Event.objects.all().filter(date__startswith=d),
+        }
+    )
+
+def events_by_year(request, event_year):
+    return render(
+        request,
+        "raven/index.html",
+        {
+            "date": datetime.date(event_year, 1, 1),
+            "events": Event.objects.filter(date__year=event_year),
+        }
+    )
+
+def events_by_year_month(request, event_year, event_month):
+    return render(
+        request,
+        "raven/index.html",
+        {
+            "date": datetime.date(event_year, event_month, 1),
+            "events": Event.objects.filter(date__year=event_year).filter(date__month=event_month),
+        }
+    )
+
+def events_by_year_month_day(request, event_year, event_month, event_day):
+    return render(
+        request,
+        "raven/index.html",
+        {
+            "date": datetime.date(event_year, event_month, event_day),
+            "events": Event.objects.filter(date__year=event_year).filter(date__month=event_month).filter(date__day=event_day),
         }
     )
